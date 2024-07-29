@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://drfkf0jhserbe"]
+
+[ext_resource type="Script" path="res://scripts/slot_holder.gd" id="1_h6fd7"]
+
+[node name="slot_holder" type="Node2D"]
+script = ExtResource("1_h6fd7")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(544, 800)
+offset_top = 100.0
+offset_bottom = 900.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 17
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(544, 900)
+offset_right = 40.0
+offset_bottom = 40.0

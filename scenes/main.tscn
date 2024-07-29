@@ -1,0 +1,164 @@
+[gd_scene load_steps=7 format=3 uid="uid://c87sd7te3njsk"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_58k8l"]
+[ext_resource type="FontFile" uid="uid://cuusyjt1rbpai" path="res://fonts/pixel_line.ttf" id="2_48m46"]
+[ext_resource type="PackedScene" uid="uid://drfkf0jhserbe" path="res://scenes/slot_holder.tscn" id="2_d52nn"]
+[ext_resource type="Texture2D" uid="uid://ciuab0vo5mwnh" path="res://sprites/grabber.png" id="3_3di2b"]
+[ext_resource type="FontFile" uid="uid://b33ocjpb4fuwu" path="res://fonts/pixel_font.ttf" id="3_elu6i"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_aqyxq"]
+thickness = 6
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_58k8l")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(544, 900)
+color = Color(0.0588235, 0.188235, 0.266667, 1)
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(544, 900)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="options" type="BoxContainer" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(544, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="mine_flag" type="Label" parent="Control/options"]
+custom_minimum_size = Vector2(180, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.435294, 0.721569, 0.894118, 1)
+theme_override_fonts/font = ExtResource("2_48m46")
+theme_override_font_sizes/font_size = 20
+text = " Mines - 40
+ Flags - 40/40 "
+vertical_alignment = 1
+
+[node name="time" type="Label" parent="Control/options"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.435294, 0.721569, 0.894118, 1)
+theme_override_fonts/font = ExtResource("2_48m46")
+theme_override_font_sizes/font_size = 20
+text = "Time
+0 0 : 0 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart" type="Button" parent="Control/options"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.435294, 0.721569, 0.894118, 1)
+theme_override_fonts/font = ExtResource("2_48m46")
+theme_override_font_sizes/font_size = 20
+text = "restart"
+flat = true
+
+[node name="menu" type="BoxContainer" parent="Control"]
+custom_minimum_size = Vector2(544, 300)
+layout_mode = 0
+offset_top = 300.0
+offset_right = 544.0
+offset_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/menu"]
+custom_minimum_size = Vector2(544, 300)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_elu6i")
+theme_override_font_sizes/font_size = 25
+text = "Choose the difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Control/menu/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_icons/grabber = ExtResource("3_3di2b")
+theme_override_styles/slider = SubResource("StyleBoxLine_aqyxq")
+max_value = 3.0
+value = 1.0
+
+[node name="Label2" type="Label" parent="Control/menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_elu6i")
+theme_override_font_sizes/font_size = 25
+text = "medium
+there will be 40 mines!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Control/menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_elu6i")
+theme_override_font_sizes/font_size = 40
+text = "GO!"
+flat = true
+
+[node name="result" type="BoxContainer" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(544, 300)
+layout_mode = 0
+offset_top = 300.0
+offset_right = 544.0
+offset_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/result"]
+custom_minimum_size = Vector2(544, 300)
+layout_mode = 2
+alignment = 1
+
+[node name="win_lose" type="Label" parent="Control/result/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_elu6i")
+theme_override_font_sizes/font_size = 50
+text = "You won !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="played_time" type="Label" parent="Control/result/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_elu6i")
+theme_override_font_sizes/font_size = 25
+text = "played time
+00 : 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="back_menu" type="Button" parent="Control/result/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_elu6i")
+theme_override_font_sizes/font_size = 30
+text = "return to menu"
+flat = true
+
+[node name="slot_holder" parent="." instance=ExtResource("2_d52nn")]
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+
+[connection signal="pressed" from="Control/options/restart" to="." method="_on_restart_pressed"]
+[connection signal="value_changed" from="Control/menu/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Control/menu/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/result/VBoxContainer/back_menu" to="." method="_on_back_menu_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
